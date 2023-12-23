@@ -1,13 +1,12 @@
 import tensorflow as tf
 
 class aae_model(tf.keras.Model):
-    def __init__(self, encoder, decoder, discriminator, latent_dim, num_class=None, dis_steps=5, gen_steps=2, gp_weight=10.0, lambda_ae = 0.999, lambda_gen=0.001):
+    def __init__(self, encoder, decoder, discriminator, latent_dim, dis_steps=5, gen_steps=2, gp_weight=10.0, lambda_ae = 0.999, lambda_gen=0.001):
         super(aae_model, self).__init__()
         self.enc = encoder
         self.dec = decoder
         self.dis = discriminator
         self.z_dim = latent_dim
-        self.n_class = num_class
         self.d_step = tf.Variable(dis_steps, trainable=False, dtype='float32')
         self.g_step = tf.Variable(gen_steps, trainable=False, dtype='float32')
         self.gp_w = gp_weight
@@ -51,12 +50,8 @@ class aae_model(tf.keras.Model):
     def reduce_d_step(self):
         self.d_step -= 1
 
-    def train_step(self, batch_data):
+    def train_step(self, batch_x):
 
-        if self.n_class != None:
-            batch_x, batch_y = batch_data
-        else:
-            batch_x = batch_data
         d_s = tf.keras.backend.get_value(self.d_step)
         g_s = tf.keras.backend.get_value(self.g_step)
         batch_size = tf.shape(batch_x)[0]
@@ -64,10 +59,7 @@ class aae_model(tf.keras.Model):
         # train autoencoder
         with tf.GradientTape() as rec_tape:
             latent_x = self.enc(batch_x, training=True)
-            if self.n_class != None:
-                x_rec = self.dec(tf.concat([latent_x, tf.one_hot(batch_y, self.n_class)], axis=1), training=True)
-            else:
-                x_rec = self.dec(latent_x, training=True)
+            x_rec = self.dec(latent_x, training=True)
             l_ae = self.rec_loss_fn(batch_x, x_rec)
         
         trainable_variables = self.enc.trainable_variables+self.dec.trainable_variables
