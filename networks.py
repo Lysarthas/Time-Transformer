@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense, Reshape, Dropout, Conv1D, AveragePooling1D, SpatialDropout1D, LayerNormalization, MultiHeadAttention
-from tensorflow.keras.layers import Conv1DTranspose, Flatten, MaxPooling1D
+from tensorflow.keras.layers import Conv1DTranspose, Flatten
 
 def timesformer_layer(tcn_inputs, trans_inputs, head_size, num_heads, filters, k_size, dilation, dropout=0.0):
     #Temporal Convolution
@@ -61,20 +61,6 @@ def timesformer_dec(input_shape, ts_shape, head_size, num_heads, n_filters, k_si
     outputs = x
     return Model(inputs, outputs, name='decoder')
 
-def timesformer_enc(input_shape, latent_dim, head_size, num_heads, n_filters, k_size, dilations, dropout=0.0):
-    inputs = Input(shape=input_shape)
-    ts_len = input_shape[0]
-    ts_dim = input_shape[1]
-    tcn, trans = inputs, inputs
-    for d in dilations:
-        tcn, trans = timesformer_layer(tcn, trans, head_size, num_heads, ts_dim, k_size, d, dropout)
-        tcn = AveragePooling1D(2)(tcn)
-        trans = AveragePooling1D(2)(trans)
-    x = tf.concat([tcn, trans], axis=-1)
-    x = Flatten()(x)
-    outputs = Dense(latent_dim)(x)
-    return Model(inputs, outputs, name='encoder')
-
 
 def cnn_enc(input_shape, latent_dim, n_filters, k_size, dropout=0.0):
     inputs = Input(shape=input_shape)
@@ -85,19 +71,6 @@ def cnn_enc(input_shape, latent_dim, n_filters, k_size, dropout=0.0):
     x = Flatten()(x)
     outputs = Dense(latent_dim)(x)
     return Model(inputs, outputs, name='encoder')
-
-def SeqCNNEnc(input_shape, latent_dim, n_filters, k_size, dropout=0.0):
-    inputs = Input(shape=input_shape)
-    x = inputs
-    for f in n_filters:
-        x = Conv1D(f, k_size, padding='same', strides=1, activation='relu')(x)
-        x = Dropout(dropout)(x)
-        x = MaxPooling1D(2)(x)
-    x = Flatten()(x)
-    x = Dense(128, activation='relu')(x)
-    # x = Dense(128, activation='relu')(x)
-    outputs = Dense(latent_dim)(x)
-    return Model(inputs, outputs, name='seq_encoder')
 
 def cnn_dec(input_shape, ts_shape, n_filters, k_size):
     inputs = Input(shape=input_shape)
