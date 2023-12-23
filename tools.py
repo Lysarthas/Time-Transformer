@@ -28,26 +28,6 @@ class MinMaxScaler():
         data *= self.range
         data += self.mini
         return data
-    
-class StandardScaler():
-
-    def __init__(self) -> None:
-        self.mean = None
-        self.std = None
-
-    def fit(self, data):
-        self.mean = np.mean(data, axis=0)
-        self.std = np.std(data, axis=0)
-    
-    def transform(self, data):
-        return (data-self.mean)/(self.std + 1e-07)
-
-    def fit_transform(self, data):
-        self.fit(data)
-        return self.transform(data)
-    
-    def inverse(self, data):
-        return data*self.std + self.mean
 
 
 class DiscrMonitor(tf.keras.callbacks.Callback):
