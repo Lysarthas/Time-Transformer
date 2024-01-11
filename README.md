@@ -1,7 +1,7 @@
 # Time-Transformer
 
 <p align="center">
-<img src=imgs/timestransformer.png />
+<img src=imgs/timetransformer.png />
 </p>
 
 Pytnon implementation paper "[**Time-Transformer: Integrating Local and Global Features for Better Time Series Generation**](https://arxiv.org/abs/2312.11714)" (SDM24).
