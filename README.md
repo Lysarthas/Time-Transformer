@@ -12,12 +12,12 @@ The model is built with "*tensorflow2*", please check the "**requirement.txt**" 
 
 If you find this model useful and put it in your publication, we encourage you to add the following references:
 ```bibtex
-@misc{liu2023timetransformer,
-      title={Time-Transformer: Integrating Local and Global Features for Better Time Series Generation}, 
-      author={Yuansan Liu and Sudanthi Wijewickrema and Ang Li and Christofer Bester and Stephen O'Leary and James Bailey},
-      year={2023},
-      eprint={2312.11714},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{liu2024time,
+  title={Time-Transformer: Integrating Local and Global Features for Better Time Series Generation},
+  author={Liu, Yuansan and Wijewickrema, Sudanthi and Li, Ang and Bester, Christofer and O'Leary, Stephen and Bailey, James},
+  booktitle={Proceedings of the 2024 SIAM International Conference on Data Mining (SDM)},
+  pages={325--333},
+  year={2024},
+  organization={SIAM}
 }
 ```
