@@ -10,7 +10,8 @@ Jupyter Notebook "**tutorial**" provide a tutorial for training and evaluating w
 
 The model is built with "*tensorflow2*", please check the "**requirement.txt**" and decide which package you need to run the model.
 
-*2025.05.11*--Recent extension project revealed the difficulty of adversarial training. Thus, we provide vae based surrogate with time-transformer module.
+*2024.09.17* -- **Time-Transformer** was applied for time series representation learning / anomaly detection task, and achieved third place in *Volvo Discovery Challenge at ECML-PKDD 2024*.
+*2025.05.11* -- Recent extension project revealed the difficulty of adversarial training. Thus, we provide vae based surrogate with time-transformer module.
 
 If you find this model useful and put it in your publication, we encourage you to add the following references:
 ```bibtex
