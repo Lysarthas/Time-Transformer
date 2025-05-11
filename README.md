@@ -8,7 +8,7 @@ Pytnon implementation paper "[**Time-Transformer: Integrating Local and Global F
 
 **Updates**:
 
-*2024.09.17* -- **Time-Transformer** was applied for time series representation learning / anomaly detection task, and achieved third place in *Volvo Discovery Challenge at ECML-PKDD 2024*.
+*2024.09.17* -- **Time-Transformer** was applied for time series representation learning \& corresponding downstream task, and achieved third place in *Volvo Discovery Challenge at ECML-PKDD 2024*.
 
 *2025.05.11* -- Recent extension project revealed the difficulty of adversarial training. Thus, we provide VAE based surrogate with time-transformer module. We use the VAE backbone implemented in "[*TimeVAE*](https://github.com/abudesai/timeVAE)".
 
