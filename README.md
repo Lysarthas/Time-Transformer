@@ -6,13 +6,13 @@
 
 Pytnon implementation paper "[**Time-Transformer: Integrating Local and Global Features for Better Time Series Generation**](https://epubs.siam.org/doi/10.1137/1.9781611978032.37)" (SDM24).
 
-**Updates**:
+# Updates:
 
 *2024.09.17* -- **Time-Transformer** was applied for time series representation learning \& corresponding downstream task, and achieved third place in [*Volvo Discovery Challenge at ECML-PKDD 2024*](https://arxiv.org/pdf/2409.11446).
 
-*2025.05.11* -- Recent extension project revealed the difficulty of adversarial training. Thus, we provide VAE based surrogate with time-transformer module. We use the VAE backbone implemented in "[*TimeVAE*](https://github.com/abudesai/timeVAE)".
+*2025.05.11* -- An extension project applies **Time Transformer** for pandemic data generation. We also found adversarial training introduces difficulty in hyperparameter tuning. Thus, we provide VAE based surrogate with time-transformer module, to mitigate the possible under fitting. We use the VAE backbone implemented in "[*TimeVAE*](https://github.com/abudesai/timeVAE)".
 
-**Instructions**:
+# Instructions:
 
 Jupyter Notebook "*tutorial*" provide a tutorial for training and evaluating with different metrics (using "*sine_cpx*" dataset). FID score are calculated with "*fid_score*" in `ts2vec`, directly using model "[*TS2Vec*](https://github.com/yuezhihan/ts2vec)".
 
