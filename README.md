@@ -10,7 +10,7 @@ Pytnon implementation for paper "[**Time-Transformer: Integrating Local and Glob
 
 *2024.09.17* -- **Time-Transformer** was applied for time series representation learning \& corresponding downstream task, and achieved third place in [*Volvo Discovery Challenge at ECML-PKDD 2024*](https://arxiv.org/pdf/2409.11446).
 
-*2025.05.11* -- An extension project applies **Time Transformer** for pandemic data generation. We also found adversarial training introduces difficulty in hyperparameter tuning. Thus, we provide VAE based surrogate with time-transformer module, to mitigate the possible under fitting. We use the VAE backbone implemented in "[*TimeVAE*](https://github.com/abudesai/timeVAE)".
+*2025.05.11* -- An extension project applies **Time Transformer** for pandemic data generation. A VAE based surrogate with time-transformer module is added to mitigate the possible under fitting. We use the VAE backbone implemented in "[*TimeVAE*](https://github.com/abudesai/timeVAE)".
 
 # Instructions:
 
